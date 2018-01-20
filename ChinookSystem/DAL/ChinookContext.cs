@@ -24,8 +24,8 @@ namespace ChinookSystem.DAL
         }
 
         //a reference to each table in the database as a virtual data set
-        public virtual Dbset<Artist> Artists { get; set; }  //add s to end because it's pural/many
-        public virtual Dbset<Album> Albums { get; set; }
-        public virtual Dbset<Track> Tracks { get; set; } 
+        public virtual DbSet<Artist> Artists { get; set; }  //add s to end because it's pural/many
+        public virtual DbSet<Album> Albums { get; set; }
+        public virtual DbSet<Track> Tracks { get; set; } 
     }
 }
