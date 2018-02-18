@@ -1,32 +1,37 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>a11f155d-e4e5-4ee4-bea0-f5ab1f395084</ID>
-    <Persist>true</Persist>
-    <Server>W203-038</Server>
+    <ID>0459a962-575d-42ef-886c-d4b2fe047e98</ID>
+    <Server>DESKTOP-IMH8G8I\SQL</Server>
     <Database>GroceryList</Database>
-    <AlphabetizeColumns>true</AlphabetizeColumns>
+    <IncludeSystemObjects>true</IncludeSystemObjects>
   </Connection>
   <Reference>&lt;RuntimeDirectory&gt;\System.Core.dll</Reference>
 </Query>
 
 //1.Create a product list which indicates what products are purchased by our customers and how many 
 //times that product was purchased. Order the list by most popular product by alphabetic description
-//Working
-from x in OrderLists
+
+//ToBeMarked
+from x in Products
+orderby x.OrderLists.Count() descending
 select new
 {
-	ProductName = x.Product.Description,
-	TimesPurchased = x.Product.Count()
-
+	Product = x.Description,
+	TimesPurchased = x.OrderLists.Count() 
 }
 
+//Vincent's notes
+/////////////////
+//from x in OrderLists
+//group x.Product.ProductID
+//select new
+//{
+//	ProductName = x.Product.Description, //Proof navigation property works
+//	TimesPurchased = x.Product.OrderLists.Count() 
+//}
 
-
-
-
-
-
-
+//.Count() when used on Navigation Properties Must be a collection to returned 
+//use them over joins
 
 ////Tests
 //from x in OrderLists

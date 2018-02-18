@@ -31,6 +31,8 @@ namespace Chinook.Data.Entities
         //navigational properties
         //Think ERD relationships
         public virtual Artist Artist { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Track> tracks { get; set; }
 
     }
