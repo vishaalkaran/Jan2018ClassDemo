@@ -13,7 +13,7 @@
 
 //ToBeMarked
 from x in Products
-orderby x.OrderLists.Count() descending
+orderby x.OrderLists.Count() descending //this stops dupilcates by grouping by count
 select new
 {
 	Product = x.Description,
