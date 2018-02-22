@@ -1,9 +1,9 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>0459a962-575d-42ef-886c-d4b2fe047e98</ID>
-    <Server>DESKTOP-IMH8G8I\SQL</Server>
+    <ID>cf5587d8-4074-4c07-a9fa-7fb76d589013</ID>
+    <Persist>true</Persist>
+    <Server>.</Server>
     <Database>GroceryList</Database>
-    <IncludeSystemObjects>true</IncludeSystemObjects>
   </Connection>
   <Reference>&lt;RuntimeDirectory&gt;\System.Core.dll</Reference>
 </Query>

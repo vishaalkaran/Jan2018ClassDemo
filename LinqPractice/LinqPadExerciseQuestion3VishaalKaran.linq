@@ -34,7 +34,9 @@ select new
 			{
 				date = dateTable.Key, //*perMonth
 				NumberOfOrders = dateTable.Count(),
-				SubTotal = from y in dateTable
-//				GST = xx.GST
+				productsales = (from y in dateTable
+							   select y.SubTotal),
+				gst = (from y in dateTable
+					  select y.GST)
 			}
 }
