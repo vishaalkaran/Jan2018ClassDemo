@@ -1,9 +1,9 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>0459a962-575d-42ef-886c-d4b2fe047e98</ID>
-    <Server>DESKTOP-IMH8G8I\SQL</Server>
+    <ID>cf5587d8-4074-4c07-a9fa-7fb76d589013</ID>
+    <Persist>true</Persist>
+    <Server>.</Server>
     <Database>GroceryList</Database>
-    <IncludeSystemObjects>true</IncludeSystemObjects>
   </Connection>
 </Query>
 
@@ -23,18 +23,18 @@ select new
 	city = x.City,
 	location = x.Location,
 	sales = from xx in Orders
-			orderby xx.OrderDate ascending
+			
+			where xx.StoreID.Equals(x.StoreID) //matching storeID or will retun all dates for every store
+			&& 
+			xx.OrderDate.Month.Equals("12") //Inputed month(December for test) 
+			
+			group xx by xx.OrderDate into dateTable //groupby's key is what ever it is grouped by here
+		
 			select new
 			{
-				date = xx.OrderDate, //*perMonth
-				NumberOfOrders = 9,
-				SubTotal = xx.SubTotal,
-				GST = xx.GST
-			
-			
+				date = dateTable.Key, //*perMonth
+				NumberOfOrders = dateTable.Count(),
+				SubTotal = from y in dateTable
+//				GST = xx.GST
 			}
-			
-	
-
-
 }
