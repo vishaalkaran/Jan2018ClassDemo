@@ -18,22 +18,19 @@ group x by x.Product.Category into catTable //you can group by with nav property
 orderby catTable.Key.Description
 select new
 {	
-
-	Category = catTable.Key.Description,		   
+	Category = catTable.Key.Description,
 	
-	//OrderProducts = x.Product 		   
-			   
 	OrderProducts = from xx in OrderLists
-					where xx.OrderID.Equals("33")
+					where xx.OrderID.Equals("33") && xx.Product.CategoryID.Equals(catTable.Key.CategoryID)
+					orderby xx.Product.Description
 					select new
 					{
 						Product = xx.Product.Description,
 						Price = xx.Product.Price,
-						PickedQtY = 1,
+						PickedQtY = xx.QtyOrdered,
 						Discount = xx.Product.Discount,
-						Subtotal = 1,
-						Tax = xx.Product.Price * 0,
-						ExtendedProce = 1
+						Subtotal = (xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered,
+						Tax = xx.Product.Taxable ? (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered * (decimal)0.05) : (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered),
+						ExtendedPrice = xx.Product.Taxable ? (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered * (decimal)1.05) : (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered)
 					}
-
 }
