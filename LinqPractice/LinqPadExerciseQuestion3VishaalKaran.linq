@@ -1,6 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>cf5587d8-4074-4c07-a9fa-7fb76d589013</ID>
+    <ID>bd264a3d-7d04-48fa-98b8-17cda44012e3</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>GroceryList</Database>
@@ -34,8 +34,10 @@ select new
 			{
 				date = dateTable.Key, //*perMonth
 				NumberOfOrders = dateTable.Count(),
+				
 				productsales = (from y in dateTable
 							   select y.SubTotal),
+							   
 				gst = (from y in dateTable
 					  select y.GST)
 			}
