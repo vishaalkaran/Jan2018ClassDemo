@@ -486,6 +486,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\roslyn\" />
+    <Folder Include="Webpages\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

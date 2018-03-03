@@ -64,20 +64,6 @@
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>--%>
-                    <asp:Menu ID="SiteNav" runat="server" DataSourceID="SiteNavDataSource"
-                        CssClass="" Orientation="Horizontal" StaticDisplayLevels="1" IncludeStyleBlock="false"
-                        StaticMenuStyle-CssClass="nav navbar-nav" StaticSelectedStyle-CssClass="active"
-                        DynamicMenuStyle-CssClass="dropdown-menu" EnableViewState="false" EnableTheming="false">
-                    </asp:Menu>
-                    <asp:SiteMapDataSource ID="SiteNavDataSource" runat="server" ShowStartingNode="false" />
-                    <script>
-                        /* Remove float styling that was injected for the menu control */
-
-                        $(function () {
-                            // Isolate the context for applying Bootstrap styling
-                            $('#SiteNav').next().removeAttr('style');
-                        });
-                    </script>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -94,6 +80,39 @@
                             </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
+                     
+                    <%--This menu thing is a copy-paste job--%>
+                     <asp:Menu ID="navMenu" runat="server"
+                         BackColor="#222222" BorderColor="Red"
+                         StaticMenuItemStyle-ForeColor="#999999"
+                         StaticMenuItemStyle-Font-Size="Larger"
+                         StaticMenuItemStyle-VerticalPadding="14px"
+                         StaticMenuItemStyle-HorizontalPadding="10px"
+                         RenderingMode="List" Orientation="Horizontal"
+                         DynamicMenuItemStyle-ForeColor="#999999"
+                         DynamicMenuItemStyle-Font-Size="Larger"
+                         DynamicMenuStyle-BackColor="Black">
+                        <Items>
+                            <asp:MenuItem Text="Home" NavigateUrl="~/"></asp:MenuItem>
+                            
+                            <asp:MenuItem Text="CRUD">
+                                <asp:MenuItem Text="ODS CRUD" NavigateUrl="~/Webpages/ODSCRUD.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="ODS Query" NavigateUrl="~/Webpages/ODSQuery.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="ODS ListView" NavigateUrl="~/Webpages/AlbumDetails.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                             <asp:MenuItem Text="Linq">
+                                <asp:MenuItem Text="RepeaterRepeater" NavigateUrl="~/Webpages/ODSRepeater.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="RepeaterGVLV" NavigateUrl="~/Webpages/EmployeeClientSupport.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="OTLP" NavigateUrl="~/Webpages/ManagePlaylist.aspx"></asp:MenuItem>
+
+
+                            <asp:MenuItem Text="About" NavigateUrl="~/About.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Contact" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+
+
                 </div>
             </div>
         </div>

@@ -1,3 +1,6 @@
+//** Must create context and entites all together
+
+
 using System;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
