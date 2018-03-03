@@ -1,3 +1,5 @@
+namespace Chinook.Data.Entities
+{
 
     using System;
     using System.Collections.Generic;
@@ -5,8 +7,6 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-namespace Chinook.Data.Entities
-{
     public partial class Album
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

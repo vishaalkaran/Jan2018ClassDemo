@@ -4,7 +4,6 @@
 using System;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 
 //under project/ Chinook.Data 
 //System.Data.Entity

@@ -15,7 +15,7 @@ using System.ComponentModel;
 namespace ChinookSystem.BLL
 {
     [DataObject]
-    class AlbumController
+    public class AlbumController //Must BE Public
     {
         //list
         [DataObjectMethod(DataObjectMethodType.Select, false)]
@@ -23,7 +23,7 @@ namespace ChinookSystem.BLL
         {
             using (var context = new ChinookContext())
             {
-                return context.Albums.ToList();
+                return context.Albums.OrderBy(x => x.Title).ToList();
             }
         }
 
