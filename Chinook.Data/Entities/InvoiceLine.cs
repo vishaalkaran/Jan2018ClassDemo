@@ -20,5 +20,8 @@ namespace Chinook.Data.Entities
         public int Quantity { get; set; }
 
         public virtual Invoice Invoice { get; set; }
+
+        //For some reason this was missing? I added it by hand on Friday March/2/2018 @10:33p
+        public virtual Track Track { get; set; }
     }
 }

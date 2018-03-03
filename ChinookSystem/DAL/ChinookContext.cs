@@ -13,7 +13,7 @@ using Chinook.Data.Entities;
 namespace ChinookSystem.DAL
 {
     //only acessable inside this project
-    internal class ChinookContext : DbContext
+    internal partial class ChinookContext : DbContext
     {
         //name holds the name value of your web conneection string
         public ChinookContext() : base("name=ChinookDB")
