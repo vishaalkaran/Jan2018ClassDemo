@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 #region Additional Namespaces
 using Chinook.Data.Entities;
+using Chinook.Data.DTOs;
+using Chinook.Data.POCOs;
 using ChinookSystem.DAL;
 using System.ComponentModel;
 #endregion
@@ -16,6 +18,7 @@ namespace ChinookSystem.BLL
     class AlbumController
     {
         //list
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Album> Album_List()
         {
             using (var context = new ChinookContext())
@@ -25,6 +28,7 @@ namespace ChinookSystem.BLL
         }
 
         //get/play
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Album Album_Get(int albumid)
         {
             using (var context = new ChinookContext())
@@ -34,6 +38,7 @@ namespace ChinookSystem.BLL
         }
 
         //add
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int Album_Add(Album item)
         {
             using (var context = new ChinookContext())
@@ -45,6 +50,7 @@ namespace ChinookSystem.BLL
         }
 
         //update
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
         public int Album_Update(Album item)
         {
             using (var context = new ChinookContext())
@@ -53,6 +59,36 @@ namespace ChinookSystem.BLL
                 return context.SaveChanges();
             }
         }
+
         //delete 
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void Albums_Delete(Album item)
+        {
+            Albums_Delete(item.AlbumId);
+        }
+
+        public void Albums_Delete(int albumid)
+        {
+            using (var context = new ChinookContext())
+            {
+                var existing = context.Albums.Find(albumid);
+                if (existing == null)
+                {
+                    throw new Exception("Album does not exists on file.");
+                }
+                context.Albums.Remove(existing);
+                context.SaveChanges();
+            }
+        }
+
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+        //public List<SelectionList> List_AlbumTitles()
+        //{
+        //    using (var context = new ChinookContext())
+        //    {
+        //        var results = ;
+        //        return results.ToList();
+        //    }
+        //}
     }
 }

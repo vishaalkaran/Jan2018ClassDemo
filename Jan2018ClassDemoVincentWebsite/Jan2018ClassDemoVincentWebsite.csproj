@@ -322,6 +322,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Web.sitemap" />
+    <Content Include="WebConnectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AddPhoneNumber.aspx.cs">
@@ -488,6 +489,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chinook.Data\Chinook.Data.csproj">
+      <Project>{bb0c95be-baf0-4952-a694-c38c61ce6874}</Project>
+      <Name>Chinook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChinookSystem\ChinookSystem.csproj">
+      <Project>{e64bb100-dfc5-4b31-b18f-bd60ec80e83f}</Project>
+      <Name>ChinookSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
