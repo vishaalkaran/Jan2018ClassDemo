@@ -267,6 +267,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="bin\Jan2018ClassDemoVincentWebsite.dll.config" />
     <Content Include="Webpages\ODSCRUD.aspx" />
+    <Content Include="Webpages\ODSRepeater.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -484,6 +485,13 @@
     </Compile>
     <Compile Include="Webpages\ODSCRUD.aspx.designer.cs">
       <DependentUpon>ODSCRUD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\ODSRepeater.aspx.cs">
+      <DependentUpon>ODSRepeater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\ODSRepeater.aspx.designer.cs">
+      <DependentUpon>ODSRepeater.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
