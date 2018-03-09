@@ -27,15 +27,12 @@ select new
 				&& ((DateTime)xxxx.PickedDate).Date.Month == 12 
 				&& ((DateTime)xxxx.PickedDate).Date.Year == 2017
   				&& ((DateTime)xxxx.PickedDate).Date.Day <= 23 //upper limit
-				& ((DateTime)xxxx.PickedDate).Date.Day >= 18 //lower limit
-				orderby xxxx.OrderID, xxxx.PickedDate descending //THIS LINE HAS NO EFFECT COMMENTED OR NOT 
+				&& ((DateTime)xxxx.PickedDate).Date.Day >= 18 //lower limit
+				orderby xxxx.PickedDate descending //THIS LINE HAS NO EFFECT COMMENTED OR NOT??!??
 				select new
 				{
 					//ID = xxxx.PickerID, not this apprently 
 					ID = xxxx.OrderID,
 					Date = xxxx.PickedDate
-				}).Distinct()
-	
-
-
+				}).AsEnumerable().Distinct()
 }
