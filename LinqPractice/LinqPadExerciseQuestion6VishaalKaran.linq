@@ -10,28 +10,22 @@
 //the product was purchased. Order by number of times purchased then description
 
 from x in Customers
+where x.CustomerID == 1
 select new
 {
 	Customer = x.LastName + ", " + x.FirstName,
 	OrdersCount = x.Orders.Count(),
-	Items = from xx in Customers
-			
-			join xxx in Orders on xx.CustomerID equals xxx.CustomerID
-			join xxxx in OrderLists on xxx.OrderID equals xxxx.OrderID
-			join xxxxx in Products on xxxx.ProductID equals xxxxx.ProductID
-			
-			where xxx.CustomerID == xx.CustomerID
-			
-			orderby xxxxx.Description descending
-			
+	Items = (from xx in OrderLists 
+			join xxx in Orders on xx.OrderID equals xxx.OrderID
+			where x.CustomerID == xxx.CustomerID
+			group xx by xx.Product into prod
+			orderby prod.Key.Description ascending
 			select new 
 			{	
-				description = xxxxx.Description,
-				timesbought = 9
-					
-			
-			
-			}
+				description = prod.Key.Description,
+				timesbought = prod.Count()
+				
+			}).AsEnumerable()
 
 
 }

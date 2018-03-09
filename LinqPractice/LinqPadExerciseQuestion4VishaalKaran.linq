@@ -1,7 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>bd264a3d-7d04-48fa-98b8-17cda44012e3</ID>
-    <Persist>true</Persist>
+    <ID>560894c0-8e7d-4db3-a192-f8f3c7995b58</ID>
     <Server>.</Server>
     <Database>GroceryList</Database>
   </Connection>
@@ -30,7 +29,7 @@ select new
 						PickedQtY = xx.QtyOrdered,
 						Discount = xx.Product.Discount,
 						Subtotal = (xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered,
-						Tax = xx.Product.Taxable ? (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered * (decimal)0.05) : (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered),
-						ExtendedPrice = xx.Product.Taxable ? (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered * (decimal)1.05) : (decimal)((xx.Product.Price - xx.Product.Discount) * (decimal)xx.QtyOrdered)
+						Tax =           xx.Product.Taxable ? (decimal)((xx.Product.Price - xx.Product.Discount) * ((decimal)xx.QtyOrdered) * ((decimal)0.05)) : 0,
+						ExtendedPrice = xx.Product.Taxable ? (decimal)((xx.Product.Price - xx.Product.Discount) * ((decimal)xx.QtyOrdered) * ((decimal)1.05)) : (decimal)((xx.Product.Price - xx.Product.Discount) * ((decimal)xx.QtyOrdered))
 					}).AsEnumerable() 
 }

@@ -1,7 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>bd264a3d-7d04-48fa-98b8-17cda44012e3</ID>
-    <Persist>true</Persist>
+    <ID>560894c0-8e7d-4db3-a192-f8f3c7995b58</ID>
     <Server>.</Server>
     <Database>GroceryList</Database>
   </Connection>
@@ -22,23 +21,17 @@ select new
 {
 	city = x.City,
 	location = x.Location,
-	sales = from xx in Orders
-			
+	sales = (from xx in Orders
 			where xx.StoreID.Equals(x.StoreID) //matching storeID or will retun all dates for every store
-			&& 
-			xx.OrderDate.Month.Equals("12") //Inputed month(December for test) 
+			&& xx.OrderDate.Month.Equals("12") //Inputed month(December for test) 
 			
 			group xx by xx.OrderDate into dateTable //groupby's key is what ever it is grouped by here
-		
 			select new
 			{
 				date = dateTable.Key, //*perMonth
 				NumberOfOrders = dateTable.Count(),
+				productsales = (from y in dateTable select y.SubTotal).Sum(),			   
+				gst = (from y in dateTable select y.GST).Sum()
 				
-				productsales = (from y in dateTable
-							   select y.SubTotal),
-							   
-				gst = (from y in dateTable
-					  select y.GST)
-			}
+			}).AsEnumerable()
 }

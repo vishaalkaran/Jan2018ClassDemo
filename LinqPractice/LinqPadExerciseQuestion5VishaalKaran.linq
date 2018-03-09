@@ -22,13 +22,16 @@ select new
 	pickdates = (from xx in Pickers
 				join xxx in Stores on xx.StoreID equals xxx.StoreID
 				join xxxx in Orders on xxx.StoreID equals xxxx.StoreID
+			
 				where xxxx.PickerID == x.PickerID
 				//Must convert to datetime to extract Day, Month, Year 
 				&& ((DateTime)xxxx.PickedDate).Date.Month == 12 
 				&& ((DateTime)xxxx.PickedDate).Date.Year == 2017
   				&& ((DateTime)xxxx.PickedDate).Date.Day <= 23 //upper limit
 				&& ((DateTime)xxxx.PickedDate).Date.Day >= 18 //lower limit
-				orderby xxxx.PickedDate descending //THIS LINE HAS NO EFFECT COMMENTED OR NOT??!??
+				
+				orderby xxxx.PickedDate descending //*****THIS LINE HAS NO EFFECT COMMENTED OR NOT??!??
+				 
 				select new
 				{
 					//ID = xxxx.PickerID, not this apprently 
